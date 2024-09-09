@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter_catlog/utils/routes.dart";
+import "package:velocity_x/velocity_x.dart";
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
@@ -30,7 +31,7 @@ class _LoginPageState extends State<LoginPage> {
 
     return Scaffold(
       appBar: AppBar(),
-      backgroundColor: Colors.white,
+      backgroundColor: context.canvasColor,
       body: Form(
         key: _formKey,
         child: Container(
@@ -78,19 +79,21 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               SizedBox(height: 20.0,),
-              InkWell(
-                onTap: () => moveToHome(context),
-                child: AnimatedContainer(
-                  duration: const Duration(seconds: 1),
-                  width: 100,
-                  height: 50,
-                  decoration: BoxDecoration(
-                    color:changeButton? Colors.yellow:Colors.greenAccent,
-                    borderRadius: const BorderRadius.all(Radius.circular(8))
+              Material(
+                color: context.theme.highlightColor,
+                child: InkWell(
+                  onTap: () => moveToHome(context),
+                  child: AnimatedContainer(
+                    duration: const Duration(seconds: 1),
+                    width: 100,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.all(Radius.circular(50))
+                    ),
+                    alignment: Alignment.center,
+                    child: changeButton ? const Icon(Icons.done, weight: 10,) : const Text("Login", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+                        
                   ),
-                  alignment: Alignment.center,
-                  child: changeButton ? const Icon(Icons.done, weight: 10,) : const Text("Login", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
-        
                 ),
               )
               // ElevatedButton(

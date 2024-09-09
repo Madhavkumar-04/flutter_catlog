@@ -1,5 +1,10 @@
 class Catelogue {
+
    static List<Item> item = [];
+   
+   Item getById(id) => item.firstWhere((element) =>element.id == id, orElse: null);
+
+   Item getByPosition(index) => item[index];
 }
 class Item{
   final num id;
